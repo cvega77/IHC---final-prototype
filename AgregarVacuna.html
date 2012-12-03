@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Pet Paws
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20100130
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PetBookCR</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="js/common-script.js"></script>
+
+    <link href="css/le-frog/jquery-ui-1.9.1.custom.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css">
+        .style2
+        {
+            width: 139px;
+            height: 76px;
+        }
+        .style3
+        {
+            width: 351px;
+        }
+        .style7
+        {
+            width: 55px;
+            height: 36px;
+        }
+        .style8
+        {
+            width: 102px;
+        }
+        .style9
+        {
+            width: 625px;
+        }
+        .style14
+        {
+            width: 40px;
+            height: 40px;
+        }
+        #content .style1 h2.title
+        {
+            margin-bottom: 30px;
+        }
+        .container
+        {
+            display: none;
+        }
+        
+        #agregar-vacuna table td
+        {
+            position: relative;
+        }
+        
+        #agregar-vacuna table td button.ui-datepicker-trigger
+        {
+            border: none;
+            background: white;
+            position: absolute;
+            top: 0px;
+            left: 155px;
+        }
+        .post
+        {
+            margin: 0px;
+        }
+        #Button1
+        {
+            background: url("images/diskette.jpg") 55px 0px no-repeat;
+            height: 23px;
+            display: inline-block;
+            width: 55px;
+            padding-right: 30px;
+            padding-top: 4px;
+        }
+        #cancelar-vacuna
+        {
+            height: 23px;
+            display: inline-block;
+            width: 45px;
+            padding-right: 30px;
+            padding-top: 5px;
+        }
+        .style15
+        {
+            width: 103px;
+        }
+        .style16
+        {
+            width: 105px;
+        }
+        .style17
+        {
+            width: 107px;
+        }
+        .style18
+        {
+            width: 90px;
+        }
+        #descripcion
+        {
+            height: 143px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var container = $('div.container');
+            $("#calendar").datepicker({
+                "dateFormat": "dd/mm/yy",
+                showOn: "both",
+                buttonImage: "images/calendar.gif"
+            });
+            $("#next-appoinment").datepicker({
+                "dateFormat": "dd/mm/yy",
+                showOn: "both",
+                buttonImage: "images/calendar.gif"
+            });
+            $("#agregar-vacuna").validate({
+                rules: {
+                    vacuna: {
+                        required: true,
+                        minlength: 5
+                    },
+                    descripcion: {
+                        required: false,
+                       
+                    },
+                    calendar: "required",
+                    "next-appoinment": {
+                        required: true,
+                        greaterThan: "#calendar"
+                    }
+                }
+            });
+
+            $("#Button1").on("click", function () {
+                if ($("#agregar-vacuna").valid()) {
+                    alert("Datos Enviados Exitosamente !");
+                    $("#agregar-vacuna").find("input").not("#Button1").val("");
+                    $("#agregar-vacuna").find("textarea").val("");
+                }
+            });
+
+            $("#agregar-vacuna").find("input").tooltip({
+                position: "center right",
+                offset: [-2, 10],
+                effect: "fade",
+                opacity: 0.7
+            });
+            $("#agregar-vacuna").find("textarea").tooltip({
+                position: "center right",
+                offset: [-2, 10],
+                effect: "fade",
+                opacity: 0.7
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="wrapper-bgtop">
+            <div id="header">
+                <div id="logo">
+                    <h1>
+                        <a href="Inicio.html">petBookcr</a></h1>
+                    <p>
+                        <em>Expediente electrónico personalizado</em></p>
+                </div>
+                <hr />
+                <table>
+                    <tr>
+                        <td id="User" class="style9" style="text-align: right">
+                            <h2 class="title" style="padding: 5px; vertical-align: middle; text-align: right">
+                                Bienvenido(a) Pedro Perez</h2>
+                            </h2>
+                        </td>
+                    </tr>
+                </table>
+                <!-- end #logo -->
+                <div id="menu">
+                    <ul>
+                        <li id="navegacion-usable"><a href="#navegacion-usable" title="Ir al Contenido Principal">Ir al Contenido Principal</a></li>
+                        <li><a id="link-perfil" href="Perfil.html" title="Ver Perfil del Usuario actual. Presiona Ctrl+q para activar esta opcion.">Mi Perfil <em>(Ctrl+q)</em></a></li>
+                        <li class="current_page_item"><a id="link-inicio" href="Inicio.html" title= "Ver listado de mascotas del usuario actual. Presiona Ctrl+y para activar esta opcion.">Mis Mascotas <em>(Ctrl+y)</em></a></li>
+                        <li class="last"><a id="link-blog" href="Blog.html" title= "Ir al Blog de usuarios registrados en PetBookCR. Presiona Ctrl+b para activar esta opcion.">Blog <em>(Ctrl+b)</em></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end #header -->
+            <!-- end #header-wrapper -->
+            <div id="page">
+                <div id="content">
+                    <table style="width: 813px; margin-bottom: 0px;">
+                        <tr>
+                            <td style="vertical-align: top" class="style18" align="l">
+                                <div class="post" style="color: #8CB70E">
+                                    <h2 class="title">
+                                        <a>Atrás</a></h2>
+                                    <h2 class="title">
+                                        <a href="Vacunas.html" title="Volver al Listado de Vacunas."><img alt="Regresar"
+                                            class="style14" longdesc="Regresar" src="images/Regresar.jpg" /></a>
+                                    </h2>
+                                </div>
+                            </td>
+                            <td style="border: thin solid #C0C0C0; padding-left: 15px;" class="style3">
+                                <div class="post">
+                                    <div class="entry">
+                                            <h2 class="title">
+                                                <a name="#navegacion-usable">Agregar Vacuna</a>
+                                            </h2>
+                                            <img alt="FotoPerfil" class="style2" longdesc="FotoPerfil" src="images/VacunaPerro.jpg" /></p>
+                                        <div class="container">
+                                            <h4>
+                                                There are serious errors in your form submission, please see below for details.</h4>
+                                        </div>
+                                        <form id="agregar-vacuna" action="#" method="post">
+                                        <table bgcolor="White" style="width: 100%; height: 29px; vertical-align: top;">
+                                            <tr>
+                                                <td class="style7" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                    <span class="red-asterisk">*</span> Fecha:
+                                                </td>
+                                                <td class="style8" style="color: #8CB70E; font-size: medium;">
+                                                    <input id="calendar" name="calendar" type="text" value="" readonly="readonly" title="Fecha de la Vacuna"  />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style15" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                    <span class="red-asterisk">*</span> Vacuna:
+                                                </td>
+                                                <td>
+                                                    <input id="vacuna" name="vacuna" type="text" value=""  title="Nombre de la Vacuna"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style16" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                    &nbsp;Observaciones:
+                                                </td>
+                                                <td class="style17">
+                                                    <textarea id="descripcion" name="descripcion" cols="16" 
+                                                        title="Descripción de la Vacuna"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style15" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                    <span class="red-asterisk">*</span> Pr&oacute;xima Vacuna:
+                                                </td>
+                                                <td>
+                                                    <input id="next-appoinment" name="next-appoinment" type="text" value="" readonly="readonly" title="Fecha de la próxima Vacuna"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style15" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                </td>
+                                                <td style="color: #8CB70E; font-size: small; font-weight: bold">
+                                                    <a id="Button1" href="javascript:void(0);" title="Guardar Vacuna">Guardar</a> <a
+                                                        id="cancelar-vacuna" href="Vacunas.html" title="Cancelar guardar vacuna">Cancelar</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </form>
+                                    </div>
+                                </div>
+                                <p class="disclaimer">
+                                    Los campos marcados con <span class="red-asterisk">*</span> son Obligatorios</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- end #content -->
+              
+                <!-- end #sidebar -->
+                <div style="clear: both;">
+                    &nbsp;</div>
+            </div>
+            <!-- end #page -->
+        </div>
+    </div>
+    <div id="footer-bgcontent">
+        <div id="footer">
+            <p>Copyright (c) 2012 petbookcr.com. All rights reserved.</p>
+            <a id="keys" href="javascript:void(0);" title="Muestra los atajos soportados por el sistema.">Keyboard shortcuts</a>
+        </div>
+    </div>
+    <div id="dialog" title="Atajos por Teclado">
+        <p>Crtl+q => Pagina de Perfil</p>
+        <p>Crtl+y => Pagina de Mascotas</p>
+        <p>Crtl+b => Blog</p>
+    </div>
+    <!-- end #footer -->
+</body>
+</html>

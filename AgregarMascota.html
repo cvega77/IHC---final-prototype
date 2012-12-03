@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Pet Paws
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20100130
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/additional-methods.js"></script>
+    <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+    <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="js/common-script.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#calendar").datepicker({
+                "dateFormat": "dd/mm/yy",
+                showOn: "both",
+                buttonImage: "images/calendar.gif"
+            });
+
+            $("#agregar-mascota").validate({
+                rules: {
+                    TextNombre: {
+                        required: true,
+                        minlength: 2
+                    },
+                    Select3: {
+                        required: true
+                    },
+                    Select2: {
+                        required: true
+                    },
+                    peso: {
+                        required: true,
+                        maxlength: 10
+                    },
+                    File1: {
+                        accept: "jpe?g|png|gif"
+                    },
+                    Perros: {
+                        required: true
+                    },
+                    Gatos: {
+                        required: true
+                    },
+                    calendar: "required"
+                }
+            });
+        });
+        function AgregarMascota() {
+            if ($("#agregar-mascota").valid()) {
+                alert("Datos Enviados Exitosamente !");
+                $("#agregar-mascota").find("input").not("select").val("");
+                $("#agregar-mascota").find("textarea").val("");
+                $("#agregar-mascota").find("select").val("");
+            }
+        }
+
+        function HabilitaRaza() {
+            var Tipo = document.getElementById("Select3");
+            if (Tipo.value == "Perro") {
+                document.getElementById("Perros").style.display = "block";
+                document.getElementById("Gatos").style.display = "none";
+                document.getElementById("Perros").selectedIndex = 0;
+            }
+            else {
+                if (Tipo.value == "Gato") {
+                    document.getElementById("Gatos").style.display = "block";
+                    document.getElementById("Perros").style.display = "none";
+                    document.getElementById("Gatos").selectedIndex = 0;
+                }
+                else {
+                    document.getElementById("Gatos").style.display = "none";
+                    document.getElementById("Perros").style.display = "block";
+                    document.getElementById("Perros").selectedIndex = 0;
+                }
+            }
+        }
+        function ValidarArchivo() {
+            var fup = document.getElementById("File1");
+            var TextField = document.getElementById("Archivotxt");
+            var fileName = fup.value;
+            var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+            if (ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+                return true;
+            }
+            else {
+                alert("Solo se permiten  archivos de imagen: Gif, Jpg o png");
+                return false;
+            }
+        }
+        function MostrarArchivo() {
+            var fup = document.getElementById("File1");
+            var TextField = document.getElementById("Archivotxt");
+            var fileName = fup.value;
+            var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+            if (ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG") {
+                TextField.value = fileName;
+                return true;
+            }
+            else {
+                alert("Solo se permiten  archivos de imagen: GIF, JPG o PNG");
+                TextField.value = "";
+                return false;
+            }
+        }
+        function CargaArchivo() {
+            document.getElementById("File1").click();
+        }
+
+        $(function () {
+            $("#agregar-mascota").find("input").tooltip({
+                position: "center right",
+                offset: [-2, 10],
+                effect: "fade",
+                opacity: 0.7
+            });
+
+            $("#agregar-mascota").find("select").tooltip({
+                position: "center right",
+                offset: [-2, 10],
+                effect: "fade",
+                opacity: 0.7
+            });
+        });
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PetBookCR</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/le-frog/jquery-ui-1.9.1.custom.css" rel="stylesheet" type="text/css"
+        media="screen" />
+    <style type="text/css">
+        .style1
+        {
+            width: 133px;
+        }
+        .style3
+        {
+            width: 447px;
+        }
+        .style9
+        {
+            width: 625px;
+        }
+        .style14
+        {
+            width: 40px;
+            height: 40px;
+        }
+        #Archivotxt
+        {
+            width: 191px;
+        }
+        .post
+        {
+            margin: 0px;
+        }
+        #guardar-mascota
+        {
+            background: url("images/diskette.jpg") 55px 0px no-repeat;
+            height: 23px;
+            display: inline-block;
+            width: 55px;
+            padding-right: 30px;
+            padding-top: 4px;
+        }
+        #cancelar-mascota
+        {
+            height: 23px;
+            display: inline-block;
+            width: 45px;
+            padding-right: 30px;
+            padding-top: 5px;
+        }
+        #File1
+        {
+            position: absolute;
+            visibility: hidden;
+            top: 257px;
+            left: 610px;
+        }
+        #buscar-foto
+        {
+            background: url("images/BuscarFoto.jpg") 70px 0px no-repeat;
+            height: 23px;
+            display: inline-block;
+            width: 80px;
+            padding-right: 30px;
+            padding-top: 4px;
+        }
+        .style16
+        {
+            width: 100px;
+        }
+        .style17
+        {
+            width: 100px;
+            height: 40px;
+        }
+        #agregar-mascota table td
+        {
+            position: relative;
+        }
+        #agregar-mascota table td button.ui-datepicker-trigger
+        {
+            border: none;
+            background: white;
+            position: absolute;
+            top: 0px;
+            left: 158px;
+        }
+        #Perros, #Gatos{
+            width: 160px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="wrapper-bgtop">
+            <div id="header">
+                <div id="logo">
+                    <h1>
+                        <a href="Inicio.html">petBookcr</a></h1>
+                    <p>
+                        <em>Expediente electrónico personalizado</em></p>
+                </div>
+                <hr />
+                <table>
+                    <tr>
+                        <td id="User" class="style9" style="text-align: right">
+                            <h2 class="title" style="padding: 5px; vertical-align: middle; text-align: right">
+                                Bienvenido(a) Pedro Perez</h2>
+                        </td>
+                    </tr>
+                </table>
+                <!-- end #logo -->
+                <div id="menu">
+                    <ul>
+                        <li id="navegacion-usable"><a href="#navegacion-usable" title="Ir al Contenido Principal">
+                            Ir al Contenido Principal</a></li>
+                        <li><a id="link-perfil" href="Perfil.html" title="Ver Perfil del Usuario actual. Presiona Ctrl+q para activar esta opcion.">
+                            Mi Perfil <em>(Ctrl+q)</em></a></li>
+                        <li class="current_page_item"><a id="link-inicio" href="Inicio.html" title="Ver listado de mascotas del usuario actual. Presiona Ctrl+y para activar esta opcion.">
+                            Mis Mascotas <em>(Ctrl+y)</em></a></li>
+                        <li class="last"><a id="link-blog" href="Blog.html" title="Ir al Blog de usuarios registrados en PetBookCR. Presiona Ctrl+b para activar esta opcion.">
+                            Blog <em>(Ctrl+b)</em></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end #header -->
+            <!-- end #header-wrapper -->
+            <div id="page">
+                <div id="content">
+                    <table style="width: 816px; margin-bottom: 0px;">
+                        <tr>
+                            <td style="vertical-align: top" class="style1" align="l">
+                                <div class="post" style="color: #8CB70E;">
+                                    <h2 class="title">
+                                        <a>Atrás </a>
+                                    </h2>
+                                    <p class="title">
+                                        <a href="Inicio.html" title="Volver a Mis Mascotas.">
+                                            <img alt="Regresar" class="style14" longdesc="Regresar" src="images/Regresar.jpg" />
+                                        </a>
+                                    </p>
+                                </div>
+                            </td>
+                            <td style="border: thin solid #C0C0C0; padding-left: 15px;" class="style3">
+                                <div class="post">
+                                    <h2 class="title">
+                                        <a name="navegacion-usable">Agregar Mascota</a></h2>
+                                    <form action="#" id="agregar-mascota">
+                                    <br />
+                                    <table bgcolor="White" style="width: 100%; height: 29px; vertical-align: top;">
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                <span class="red-asterisk">*</span> Nombre:
+                                            </td>
+                                            <td>
+                                                <input id="TextNombre" name="TextNombre" type="text" title="Nombre de la Mascota" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                <span class="red-asterisk">*</span> Tipo:
+                                            </td>
+                                            <td>
+                                                <select id="Select3" name="Select3" title="Tipo de Mascota" onchange="HabilitaRaza();">
+                                                    <option value="">Seleccione una opción </option>
+                                                    <option value="Cabra">Cabra</option>
+                                                    <option value="Codorniz">Codorniz</option>
+                                                    <option value="Gallina">Gallina</option>
+                                                    <option value="Gallo">Gallo</option>
+                                                    <option value="Ganso">Ganso</option>
+                                                    <option value="Gato">Gato</option>
+                                                    <option value="Oveja">Oveja</option>
+                                                    <option value="Pajaros">Pájaros</option>
+                                                    <option value="Pato">Pato</option>
+                                                    <option value="Pavo">Pavo</option>
+                                                    <option value="Perro">Perro</option>
+                                                    <option value="Roedor">Roedores</option>
+                                                    <option value="Tortuga">Tortugas</option>
+                                                    <option value="Vaca">Vaca</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                <span class="red-asterisk">*</span> Raza:
+                                            </td>
+                                            <td>
+                                                <select id="Perros" name="Perros" title="Razas de Perros">
+                                                    <option value="">Seleccione una Raza</option>
+                                                    <option value="N/A">No Aplica</option>
+                                                    <option value="	Akita Inu">Akita Inu </option>
+                                                    <option value="	Alaskan Malamute">Alaskan Malamute </option>
+                                                    <option value="	Barzoi	">Barzoi </option>
+                                                    <option value="	Basset Azul de Gascuña">Basset Azul de Gascuña </option>
+                                                    <option value="	Basset Hound">Basset Hound </option>
+                                                    <option value="	Beagle">Beagle </option>
+                                                    <option value="	Beagle Harrier">Beagle Harrier </option>
+                                                    <option value="	Beauceron">Beauceron </option>
+                                                    <option value="	Bichón Maltés">Bichón Maltés </option>
+                                                    <option value="	Bobtail	">Bobtail </option>
+                                                    <option value="	Border Collie">Border Collie </option>
+                                                    <option value="	Boxer">Boxer </option>
+                                                    <option value="	Boyero de Berna">Boyero de Berna </option>
+                                                    <option value="	Braco Alemán">Braco Alemán </option>
+                                                    <option value="	Braco Francés">Braco Francés </option>
+                                                    <option value="	Briard">Briard </option>
+                                                    <option value="	Bull Terrier Inglés">Bull Terrier Inglés </option>
+                                                    <option value="	Bulldog Francés">Bulldog Francés </option>
+                                                    <option value="	Bulldog Inglés">Bulldog Inglés </option>
+                                                    <option value="	Bullmastiff">Bullmastiff </option>
+                                                    <option value="	Cairn Terrier">Cairn Terrier </option>
+                                                    <option value="	Cane Corso">Cane Corso </option>
+                                                    <option value="	Caniche">Caniche </option>
+                                                    <option value="	Cavalier King Charles">Cavalier King Charles </option>
+                                                    <option value="	Chihuahua">Chihuahua </option>
+                                                    <option value="	Chow Chow">Chow Chow </option>
+                                                    <option value="	Cocker Spaniel Americano">Cocker Spaniel Americano </option>
+                                                    <option value="	Cocker Spaniel Inglés">Cocker Spaniel Inglés </option>
+                                                    <option value="	Collie Rough">Collie Rough </option>
+                                                    <option value="	Collie Smooth">Collie Smooth </option>
+                                                    <option value="	Dálmata	">Dálmata </option>
+                                                    <option value="	Doberman">Doberman </option>
+                                                    <option value="	Dogo Argentino">Dogo Argentino </option>
+                                                    <option value="	Dogo de Burdeos">Dogo de Burdeos </option>
+                                                    <option value="	Epagneul Bretón">Epagneul Bretón </option>
+                                                    <option value="	Epagneul Francés">Epagneul Francés </option>
+                                                    <option value="	Epagneul Japonés">Epagneul Japonés </option>
+                                                    <option value="	Fox Terrier">Fox Terrier </option>
+                                                    <option value="	Galgo Español">Galgo Español </option>
+                                                    <option value="	Galgo Irlandés">Galgo Irlandés </option>
+                                                    <option value="	Golden Retriever">Golden Retriever </option>
+                                                    <option value="	Gordon Setter">Gordon Setter </option>
+                                                    <option value="	Gos d'Atura">Gos d'Atura </option>
+                                                    <option value="	Gran Danés">Gran Danés </option>
+                                                    <option value="	Husky Siberiano">Husky Siberiano </option>
+                                                    <option value="	Komondor">Komondor </option>
+                                                    <option value="	Labrador Retriever">Labrador Retriever </option>
+                                                    <option value="	Lebrel Afgano">Lebrel Afgano </option>
+                                                    <option value="	Lebrel Polaco">Lebrel Polaco </option>
+                                                    <option value="	Mastiff">Mastiff </option>
+                                                    <option value="	Mastín de los Pirineos">Mastín de los Pirineos </option>
+                                                    <option value="	Mastín Español">Mastín Español </option>
+                                                    <option value="	Mastín Napolitano">Mastín Napolitano </option>
+                                                    <option value="	Montaña de los Pirineos">Montaña de los Pirineos </option>
+                                                    <option value="	Norfolk Terrier">Norfolk Terrier </option>
+                                                    <option value="	Norwich Terrier">Norwich Terrier </option>
+                                                    <option value="	Papillon">Papillon </option>
+                                                    <option value="	Pastor Alemán">Pastor Alemán </option>
+                                                    <option value="	Pastor Australiano">Pastor Australiano </option>
+                                                    <option value="	Pastor Belga">Pastor Belga </option>
+                                                    <option value="	Pastor Blanco Suizo">Pastor Blanco Suizo </option>
+                                                    <option value="	Pastor de los Pirineos">Pastor de los Pirineos </option>
+                                                    <option value="	Pekinés">Pekinés </option>
+                                                    <option value="	Pequeño Azul de Gascuña">Pequeño Azul de Gascuña </option>
+                                                    <option value="	Pequeño Basset Griffon">Pequeño Basset Griffon </option>
+                                                    <option value="	Pequeño Brabantino">Pequeño Brabantino </option>
+                                                    <option value="	Pequeño Perro León">Pequeño Perro León </option>
+                                                    <option value="	Pequeño Perro Ruso">Pequeño Perro Ruso </option>
+                                                    <option value="	Pequeño Sabueso Suizo">Pequeño Sabueso Suizo </option>
+                                                    <option value="	Perdiguero de Burgos">Perdiguero de Burgos </option>
+                                                    <option value="	Perdiguero Portugués">Perdiguero Portugués </option>
+                                                    <option value="	Perro de Agua Español">Perro de Agua Español </option>
+                                                    <option value="	Perro Lobo de Checoslovaquia">Perro Lobo de Checoslovaquia </option>
+                                                    <option value="	Pinscher miniatura">Pinscher miniatura </option>
+                                                    <option value="	Pit Bull">Pit Bull </option>
+                                                    <option value="	Podenco Canario">Podenco Canario </option>
+                                                    <option value="	Podenco Ibicenco">Podenco Ibicenco </option>
+                                                    <option value="	Pointer Inglés">Pointer Inglés </option>
+                                                    <option value="	Presa Canario">Presa Canario </option>
+                                                    <option value="	Pug	">Pug </option>
+                                                    <option value="	Rafeiro do Alentejo">Rafeiro do Alentejo </option>
+                                                    <option value="	Rottweiler">Rottweiler </option>
+                                                    <option value="	Samoyedo">Samoyedo </option>
+                                                    <option value="	San Bernardo">San Bernardo </option>
+                                                    <option value="	Schnauzer gigante">Schnauzer gigante </option>
+                                                    <option value="	Schnauzer mediano">Schnauzer mediano </option>
+                                                    <option value="	Schnauzer miniatura">Schnauzer miniatura </option>
+                                                    <option value="	Scottish Terrier">Scottish Terrier </option>
+                                                    <option value="	Setter Inglés">Setter Inglés </option>
+                                                    <option value="	Setter Irlandés">Setter Irlandés </option>
+                                                    <option value="	Shar Pei">Shar Pei </option>
+                                                    <option value="	Shih Tzu">Shih Tzu </option>
+                                                    <option value="	Spitz">Spitz </option>
+                                                    <option value="	Springer Spaniel Galés">Springer Spaniel Galés </option>
+                                                    <option value="	Springer Spaniel Inglés">Springer Spaniel Inglés </option>
+                                                    <option value="	Teckel">Teckel </option>
+                                                    <option value="	Terranova">Terranova </option>
+                                                    <option value="	Weimaraner">Weimaraner </option>
+                                                    <option value="	Westies">Westies </option>
+                                                    <option value="	Whippet">Whippet </option>
+                                                    <option value="	Yorkshire Terrier">Yorkshire Terrier </option>
+                                                </select>
+                                                <select id="Gatos" name="Gatos" title="Razas de Gatos" style="display: none">
+                                                    <option value="">Seleccione una Raza</option>
+                                                    <option value="N/A">No Aplica</option>
+                                                    <option value=" Abisinio">Abisinio </option>
+                                                    <option value="	American Curl">American Curl </option>
+                                                    <option value="	Americano de Pelo Corto	">Americano de Pelo Corto </option>
+                                                    <option value="	Angora Turco">Angora Turco </option>
+                                                    <option value="	Balinés">Balinés </option>
+                                                    <option value="	Bengala">Bengala </option>
+                                                    <option value="	Birmano">Birmano </option>
+                                                    <option value="	Bobtail japonés">Bobtail japonés </option>
+                                                    <option value="	Bombay">Bombay </option>
+                                                    <option value="	Británico de Pelo Corto">Británico de Pelo Corto </option>
+                                                    <option value="	Burmés">Burmés </option>
+                                                    <option value="	Burmilla">Burmilla </option>
+                                                    <option value="	Cartujo">Cartujo </option>
+                                                    <option value="	Cornish Red">Cornish Red </option>
+                                                    <option value="	Cymric">Cymric </option>
+                                                    <option value="	Devon Rex">Devon Rex </option>
+                                                    <option value="	Egipcio">Egipcio </option>
+                                                    <option value="	Europeo de Pelo Corto">Europeo de Pelo Corto </option>
+                                                    <option value="	Exótico">Exótico </option>
+                                                    <option value="	Fold de las Tierras Altas">Fold de las Tierras Altas </option>
+                                                    <option value="	Habana Brown">Habana Brown </option>
+                                                    <option value="	Himalayo">Himalayo </option>
+                                                    <option value="	Javanés">Javanés </option>
+                                                    <option value="	Korat">Korat </option>
+                                                    <option value="	Maine Coon">Maine Coon </option>
+                                                    <option value="	Manx">Manx </option>
+                                                    <option value="	Noruego de Bosque">Noruego de Bosque </option>
+                                                    <option value="	Ocycat">Ocycat </option>
+                                                    <option value="	Oriental de Pelo Corto">Oriental de Pelo Corto </option>
+                                                    <option value="	Pelo de Punta Americano">Pelo de Punta Americano </option>
+                                                    <option value="	Persa">Persa </option>
+                                                    <option value="	Ragdoll">Ragdoll </option>
+                                                    <option value="	Rex - Selkirk">Rex - Selkirk </option>
+                                                    <option value="	Ruso Azul">Ruso Azul </option>
+                                                    <option value="	Scottish Fold">Scottish Fold </option>
+                                                    <option value="	Siamés">Siamés </option>
+                                                    <option value="	Siberiano">Siberiano </option>
+                                                    <option value="	Singapura - Kucinta">Singapura - Kucinta </option>
+                                                    <option value="	Somalí">Somalí </option>
+                                                    <option value="	Sphynx">Sphynx </option>
+                                                    <option value="	Tonquinés">Tonquinés </option>
+                                                    <option value="	Van Turco">Van Turco </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                <span class="red-asterisk">*</span> Sexo:
+                                            </td>
+                                            <td style="vertical-align: bottom">
+                                                <select id="Select2" name="Select2" title="Sexo de la Mascota">
+                                                    <option>Macho</option>
+                                                    <option>Hembra</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="style16" style="color: #8CB70E; font-size: medium; font-weight: bold">
+                                                <span class="red-asterisk">*</span> Fecha de Nacimiento:
+                                            </td>
+                                            <td>
+                                                <input id="calendar" name="calendar" readonly="readonly" title="Fecha de Naciemiento" type="text" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                <span class="red-asterisk">*</span> Peso <em style="font-size: 12px;">(en kilos)</em>:
+                                            </td>
+                                            <td>
+                                                <input id="peso" name="peso" type="text" title="Peso de la Mascota expresado en Kilos." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                &nbsp; Castrado:
+                                            </td>
+                                            <td>
+                                                <select id="Select1" name="D1" title="Su mascota está castrada?">
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                    <option>N/A</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                &nbsp; Alergias:
+                                            </td>
+                                            <td>
+                                                <input id="Text3" type="text" title="Alergias de su mascota" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                &nbsp; Notas:
+                                            </td>
+                                            <td>
+                                                <input id="Text4" type="text" title="Notas Adicionales" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: medium; font-weight: bold" class="style16">
+                                                &nbsp; Foto Seleccionada:
+                                            </td>
+                                            <td>
+                                                <span><a id="buscar-foto" href="javascript:void(0);" title="Buscar una foto en mis archivos"
+                                                    onclick='CargaArchivo();'>Buscar Foto</a> </span>
+                                                <br />
+                                                <input id="Archivotxt" type="text" onclick="return Archivotxt_onclick();" readonly="readonly" />
+                                                <input id="File1" name="File1" type="file" onchange='MostrarArchivo();' />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style17">
+                                            </td>
+                                            <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style14">
+                                                <a id="guardar-mascota" href="javascript:void(0);" title="Guarda la nueva mascota."
+                                                    onclick='AgregarMascota()'>Guardar</a> <a id="cancelar-mascota" href="Inicio.html"
+                                                        title="Cancelar guardar mascota.">Cancelar</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    </form>
+                                </div>
+                                <p class="disclaimer">
+                                    Los campos marcados con <span class="red-asterisk">*</span> son Obligatorios</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- end #content -->
+                <!-- end #sidebar -->
+                <div style="clear: both;">
+                    &nbsp;</div>
+            </div>
+            <!-- end #page -->
+        </div>
+    </div>
+    <div id="footer-bgcontent">
+        <div id="footer">
+            <p>
+                Copyright (c) 2012 petbookcr.com. All rights reserved.</p>
+            <a id="keys" href="javascript:void(0);" title="Muestra los atajos soportados por el sistema.">
+                Keyboard shortcuts</a>
+        </div>
+    </div>
+    <div id="dialog" title="Atajos por Teclado">
+        <p>
+            Crtl+q => Pagina de Perfil</p>
+        <p>
+            Crtl+y => Pagina de Mascotas</p>
+        <p>
+            Crtl+b => Blog</p>
+    </div>
+    <!-- end #footer -->
+</body>
+</html>

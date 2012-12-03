@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Pet Paws
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20100130
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.js"></script>
+    <script type="text/javascript" src="js/common-script.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".style13").on("click", function(){
+                $(this).parents("p").remove();
+                var children = $("#sidebar").find("a.style13").length;
+                if(children == 0){
+                    $("#sidebar").fadeOut("slow");
+                }
+            });
+
+            $(".style13").on("keydown", function(e){
+                if(e.which == 13){
+                    $(this).parents("p").remove();
+                    var children = $("#sidebar").find("a.style13").length;
+                    if(children == 0){
+                        $("#sidebar").fadeOut("slow");
+                    }
+                }
+            });
+        });
+        function BorrarMascota() {
+            var mascota = $('#Select1').find("option:selected");
+            var response;
+            if (mascota.length == 0) {
+                alert("Seleccione una Mascota");
+            }
+            else {
+                response = confirm("Se eliminará la mascota seleccionada: " + mascota.val());
+                if (response) {
+                    $("#Select1").find("option:selected").remove();
+                }
+            }
+        }
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PetBookCR</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/le-frog/jquery-ui-1.9.1.custom.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css">
+        .style1
+        {
+            width: 79px;
+        }
+        #Select1
+        {
+            margin-right: 5px;
+            width: 149px;
+        }
+        .style2
+        {
+            width: 260px;
+            height: 186px;
+        }
+        .style3
+        {
+            width: 447px;
+        }
+        .style5
+        {
+            width: 96px;
+        }
+        .style8
+        {
+            width: 92px;
+        }
+        .style9
+        {
+            width: 625px;
+        }
+        .style10
+        {
+            width: 29px;
+        }
+        #sidebar a.style13
+        {
+            text-decoration: underline;
+            color: #ff0000;
+        }
+        .style14
+        {
+            width: 193px;
+        }
+        .style17
+        {
+            width: 104px;
+        }
+        .enlace-home{
+            padding-right: 12px;
+            display: block;
+        }
+        #imprimir-datos{
+            background: url("images/printer2.jpg") 100px 0px no-repeat;
+            width: 135px;
+            height: 32px;
+        }
+        #historial-vacunas{
+            background: url("images/vacuna.jpg") 80px 0px no-repeat;
+            width: 100px;
+            height: 32px;
+        }
+        #otros-tratamientos{
+            background: url("images/tratamiento.jpg") 100px 0px no-repeat;
+            width: 100px;
+            height: 32px;
+            padding-right: 32px;
+        }
+        #agregar-mascota{
+            background: url("images/AgregarMascotas2.jpg") 118px 0px no-repeat;
+            width: 115px;
+            height: 40px;
+            padding-right: 50px;
+            display: block;
+            padding-top: 6px;
+        }
+        #eliminar-mascota{
+            background: url("images/BorrarMascotas2.jpg") 118px 0px no-repeat;
+            width: 115px;
+            height: 40px;
+            padding-right: 50px;
+            display: block;
+            padding-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="wrapper-bgtop">
+            <div id="header">
+                <div id="logo">
+                    <h1>
+                        <a href="Inicio.html">petBookcr</a></h1>
+                    <p>
+                        <em>Expediente electrónico personalizado</em></p>
+                </div>
+                <hr />
+                <table>
+                    <tr>
+                        <td id="User" class="style9" style="text-align: right">
+                            <h2 class="title" style="padding: 5px; vertical-align: middle; text-align: right">Bienvenido(a) Pedro Perez</h2>
+                        </td>
+                    </tr>
+                </table>
+                <!-- end #logo -->
+                <div id="menu">
+                    <ul>
+                        <li id="navegacion-usable"><a href="#navegacion-usable" title="Ir al Contenido Principal">Ir al Contenido Principal</a></li>
+                        <li><a id="link-perfil" href="Perfil.html" title="Ver Perfil del Usuario actual. Presiona Ctrl+q para activar esta opcion.">Mi Perfil <em>(Ctrl+q)</em></a></li>
+                        <li class="current_page_item"><a id="link-inicio" href="Inicio.html" title= "Ver listado de mascotas del usuario actual. Presiona Ctrl+y para activar esta opcion.">Mis Mascotas <em>(Ctrl+y)</em></a></li>
+                        <li class="last"><a id="link-blog" href="Blog.html" title= "Ir al Blog de usuarios registrados en PetBookCR. Presiona Ctrl+b para activar esta opcion.">Blog <em>(Ctrl+b)</em></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end #header -->
+            <!-- end #header-wrapper -->
+            <div id="page">
+                <div id="content">
+                    <table style="width: 648px; margin-bottom: 0px;">
+                        <tr>
+                            <td style="vertical-align: top" class="style1" align="l">
+                                <div class="post" style="color: #8CB70E">
+                                    <h2 class="title"><a>Mis Mascotas</a></h2>
+                                    <p class="title">&nbsp;</p>
+                                    Haga doble click sobre una de las mascotas para visualizar la información correspondiente.<br />
+                                    <br />
+                                    <select id="Select1" name="D1" size="10" style="padding-left: -1px">
+                                        <option>Doggy</option>
+                                        <option>Catty</option>
+                                        <option>Duck</option>
+                                        <option>Fishy</option>
+                                        <option>Bolita</option>
+                                        <option>Noisy</option>
+                                    </select>
+                                    <table style="vertical-align: middle;">
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style14">
+                                                <a id="agregar-mascota" href="AgregarMascota.html" title="Agregar una mascota a la lista.">Agregar Mascota</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style14">
+                                                <a id="eliminar-mascota" href="javascript:void(0);" onclick='BorrarMascota();' title="Eliminar una mascota de la lista.">Eliminar Mascotas  </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="border: thin solid #C0C0C0; padding-left: 15px;" class="style3">
+                                <div class="post">
+                                    <h2 class="title">
+                                        <a href="#" name="navegacion-usable">Expendiente: Doggy</a></h2>
+                                    <div class="entry">
+                                        <p>
+                                            <img alt="FotoPerfil" class="style2" longdesc="FotoPerfil" src="images/perro.jpg" /></p>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        <b>Tipo:</b> Perro
+                                                        <br />
+                                                        <b>Raza: </b>Labrador
+                                                        <br />
+                                                        <b>Sexo:</b> Macho
+                                                        <br />
+                                                        <b>Edad:</b>
+                                                    3 Años
+                                                </td>
+                                                <td class="style10">
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <b>Peso:</b> 10 kg
+                                                        <br />
+                                                        <b>Castrado : </b>No<br />
+                                                        <b>Alergias:</b> No
+                                                        <br />
+                                                        <b>Notas:</b>
+                                                    Problema de audición
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table style="width: 100%; height: 29px; vertical-align: top;">
+                                            <tr>
+                                                <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style17">
+                                                    <a id="imprimir-datos" class="enlace-home" href="javacript:void(0);" title="Imprimir datos de su mascota." onclick="window.print();">Imprimir Datos Básicos </a>
+                                                </td>
+                                                <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style8">
+                                                    <a id="historial-vacunas" class="enlace-home" href="Vacunas.html" title="Permite agregar nuevas vacunas al sistema y lista el historial de vacunas de  su mascota.">Agregar y <br />listar Vacunas</a>
+                                                </td>
+                                                <td style="color: #8CB70E; font-size: small; font-weight: bold" class="style5">
+                                                    <a id="otros-tratamientos" class="enlace-home" href="Tratamientos.html" title="Permite agregar nuevos tratamientos al sistema y lista el historial de tratamientos de  su mascota.">Agregar y listar Tratamientos</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- end #content -->
+                <div id="sidebar" style="background-color: #C0C0C0">
+                    <ul>
+                        <li>
+                            <h2 style="color: #FFFFFF">
+                                Notificaciones</h2>
+                            <p>
+                                Su mascota Doggy, necesita un refuerzo de vacuna el dia 10/12/2012.
+                                <a class="style13" href="javascript:void(0);" title="Elimina la notificación de la lista">Eliminar</a>
+                            </p>
+                            <p>
+                                &nbsp;</p>
+                            <p>
+                                Su mascota Bolita, debe ser desparasitada el dia 9/11/2012.
+                                <a class="style13" href="javascript:void(0);" title="Elimina la notificación de la lista">Eliminar</a>
+                            </p>
+                            <p>
+                                &nbsp;</p>
+                            <p>
+                                Su mascota Noisy requiere seguimiento del tratamiento realizado el día 12/08/2012.
+                                <a class="style13" href="javascript:void(0);" title="Elimina la notificación de la lista">Eliminar</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end #sidebar -->
+                <div style="clear: both;">
+                    &nbsp;</div>
+            </div>
+            <!-- end #page -->
+        </div>
+    </div>
+    <div id="footer-bgcontent">
+        <div id="footer">
+            <p>Copyright (c) 2012 petbookcr.com. All rights reserved.</p>
+            <a id="keys" href="javascript:void(0);" title="Muestra los atajos soportados por el sistema.">Keyboard shortcuts</a>
+        </div>
+    </div>
+    <div id="dialog" title="Atajos por Teclado">
+        <p>Crtl+q => Pagina de Perfil</p>
+        <p>Crtl+y => Pagina de Mascotas</p>
+        <p>Crtl+b => Blog</p>
+    </div>
+    <!-- end #footer -->
+</body>
+</html>
